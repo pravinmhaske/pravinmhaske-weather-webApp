@@ -1,0 +1,291 @@
+$bg-color:black;
+$color:#fff;
+body,html {
+	display: flex;
+	min-height: calc(100vh - 0px);	
+	flex-direction: column;
+	background-image: url("../assets/image/df.jpeg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: auto;
+	overflow-x: hidden;
+
+	.is-custom-button-social {
+		background-color: transparent;
+		color:$color;
+		&:hover {
+			color: rgba(255, 201, 82, .99);
+			border-color: rgba(255, 116, 115, .99);
+		}
+	}
+	.is-custom-hero-header {
+		background-color: transparent;
+	}
+	.is-custom-form-input-text {
+		background-color: rgba(0, 78, 102, .7);
+		color: rgba(255, 255, 255, .99);
+		border-radius: 2px;
+		box-shadow: none;
+		text-align: center;
+		border: none;
+		&::placeholder {
+			color: rgba(255, 255, 255, .99);
+		}
+		&:focus {
+			box-shadow: none;
+		}
+	}
+	.is-custom-color-icon-check {
+		color: green 
+	}
+	.is-custom-color-icon-ban {
+		color: red 
+	}
+	.is-custom-notification {
+		background-color: rgba(0, 78, 102, .7);
+		color: rgba(255, 252, 240, .99);
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+	.is-custom-tile {
+		overflow: hidden;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		article.tile {
+			background-color: rgba(0, 78, 102, .7);
+			color: rgba(255, 252, 240, .99);
+		}
+	}
+	.is-custom-footer {
+		background-color: $bg-color;
+		color: rgba(255, 252, 240, .99);
+		margin-top: 20px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.is-custom-icon-heart {
+		color: rgba(255, 116, 115, .99);
+	}
+	.is-custom-footer-link {
+		color: rgba(73, 10, 61, .99);
+		transition: all .2s ease-in-out;
+		&:hover {
+			color: rgba(249, 212, 35, .99);
+		}
+	}
+	.is-grouped {
+		display: flex;
+		justify-content: space-evenly;
+	}
+	.autocomplete {
+		position: relative;
+		display: inline-block;
+	}
+	input {
+		border: 1px solid transparent;
+		background-color: #f1f1f1;
+		padding: 10px;
+		font-size: 16px;
+	}
+	input[type=text] {
+		background-color: #f1f1f1;
+	}
+	input[type=submit] {
+		background-color: $bg-color;
+		color: $color;
+		cursor: pointer;
+	}
+	.autocomplete-items {
+		position: absolute;
+		border: 1px solid #d4d4d4;
+		border-bottom: none;
+		border-top: none;
+		z-index: 99;
+		top: 100%;
+		left: 0;
+		right: 0;
+		div {
+			padding: 10px;
+			cursor: pointer;
+			background-color: $color;
+			border-bottom: 1px solid #d4d4d4;
+			&:hover {
+				background-color: #e9e9e9;
+			}
+		}
+	}
+	.autocomplete-active {
+		background-color:$bg-color !important ;
+		color: $color;
+	}
+	.display-flex {
+		display: flex;
+	}
+	.pt-search-form {
+		padding-top: 11%;
+	}
+	.w-300 {
+		width: 400px;
+	}
+
+	.footer_push {
+		flex: 1;
+	}
+	#getCurrentLocation {
+		background-color:$bg-color;
+		color: $color;
+		margin-left: 6%;
+		border: none;
+		width: 74px;
+	}
+	.weather-card {
+		margin: 60px auto;
+		background: $color;
+		box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
+		overflow: hidden;
+		.top {
+			position: relative;
+			height: 41%;
+			width: 100%;
+			overflow: hidden;
+			background: url("https://s-media-cache-ak0.pinimg.com/564x/cf/1e/c4/cf1ec4b0c96e59657a46867a91bb0d1e.jpg") no-repeat;
+			background-size: cover;
+			background-position: center center;
+			text-align: center;
+			.wrapper {
+				padding: 30px;
+				position: relative;
+				z-index: 1;
+				.mynav {
+					height: 20px;
+					.lnr {
+						color: $color;
+						font-size: 20px;
+					}
+					.lnr-chevron-left {
+						float: left;
+					}
+					.lnr-cog {
+						float: right;
+					}
+				}
+				.heading {
+					margin-top: 20px;
+					font-size: 35px;
+					font-weight: 400;
+					color: $color;
+				}
+				.location {
+					margin-top: 20px;
+					font-size: 21px;
+					font-weight: 400;
+					color: $color;
+				}
+				.temp {
+					margin-top: 20px;
+					a {
+						text-decoration: none;
+						color: $color;
+						.temp-type {
+							font-size: 85px;
+						}
+					}
+					.temp-value {
+						display: inline-block;
+						font-size: 85px;
+						font-weight: 600;
+						color:$color;
+					}
+					.deg {
+						display: inline-block;
+						font-size: 35px;
+						font-weight: 600;
+						color: $color;
+						vertical-align: top;
+						margin-top: 10px;
+					}
+				}
+			}
+			&:after {
+				content: "";
+				height: 100%;
+				width: 100%;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba(0, 0, 0, 0.5);
+			}
+		}
+		.bottom {
+			padding: 0 30px;
+			background: $color;
+			.wrapper {
+				.forecast {
+					overflow: hidden;
+					margin: 0;
+					font-size: 0;
+					padding: 0;
+					padding-top: 20px;
+					max-height: 155px;
+					a {
+						text-decoration: none;
+						color: #000;
+					}
+					.go-up {
+						text-align: center;
+						display: block;
+						font-size: 25px;
+						margin-bottom: 10px;
+					}
+					li {
+						display: block;
+						font-size: 25px;
+						font-weight: 400;
+						color: rgba(0, 0, 0, 0.25);
+						line-height: 1em;
+						margin-bottom: 30px;
+						.date {
+							display: inline-block;
+						}
+						.condition {
+							vertical-align: middle;
+							float: right;
+							font-size: 25px;
+							.temp {
+								display: inline-block;
+								vertical-align: top;
+								font-family: 'Montserrat', sans-serif;
+								font-size: 20px;
+								font-weight: 400;
+								padding-top: 2px;
+								.deg {
+									display: inline-block;
+									font-size: 10px;
+									font-weight: 600;
+									margin-left: 3px;
+									vertical-align: top;
+								}
+								.temp-type {
+									font-size: 20px;
+								}
+							}
+						}
+					}
+					li.active {
+						color: rgba(0, 0, 0, 0.8);
+					}
+				}
+			}
+		}
+	}
+	.weather-card.rain {
+		.top {
+			background: url("http://img.freepik.com/free-vector/girl-with-umbrella_1325-5.jpg?size=338&ext=jpg") no-repeat;
+			background-size: cover;
+			background-position: center center;
+		}
+	}
+	
+}
