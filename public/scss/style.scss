@@ -81,6 +81,10 @@ body,html {
 	.autocomplete {
 		position: relative;
 		display: inline-block;
+		flex: 8;
+		.search{
+			height: 100% !important;
+		}
 	}
 	input {
 		border: 1px solid transparent;
@@ -95,6 +99,7 @@ body,html {
 		background-color: $bg-color;
 		color: $color;
 		cursor: pointer;
+		flex:1
 	}
 	.autocomplete-items {
 		position: absolute;
@@ -137,7 +142,8 @@ body,html {
 		color: $color;
 		margin-left: 6%;
 		border: none;
-		width: 74px;
+		// width: 74px;
+		flex:1
 	}
 	.weather-card {
 		margin: 60px auto;
@@ -199,12 +205,17 @@ body,html {
 					}
 					.deg {
 						display: inline-block;
-						font-size: 35px;
+						font-size: 3%;
 						font-weight: 600;
 						color: $color;
 						vertical-align: top;
 						margin-top: 10px;
 					}
+					@media only screen and (max-width: 600px) {
+						.temp-value{
+							font-size: 44px ;
+						}
+					  }
 				}
 			}
 			&:after {
@@ -228,7 +239,7 @@ body,html {
 					font-size: 0;
 					padding: 0;
 					padding-top: 20px;
-					max-height: 155px;
+					// max-height: 155px;
 					a {
 						text-decoration: none;
 						color: #000;
@@ -241,7 +252,7 @@ body,html {
 					}
 					li {
 						display: block;
-						font-size: 25px;
+						font-size: 18px;
 						font-weight: 400;
 						color: rgba(0, 0, 0, 0.25);
 						line-height: 1em;
@@ -273,6 +284,25 @@ body,html {
 							}
 						}
 					}
+					.deg{
+						vertical-align: top;
+						font-size: 10px;
+						margin-bottom: 20px;
+					}
+					.pt-10{
+						padding-top: 10px;;	
+					}
+					@media only screen and (max-width: 600px) {
+						.temp-values {
+						  text-align: left !important;
+						}
+						.temp-value{
+							font-size: 44px !important;
+						}
+					  }
+					.divider {
+						border-top: 1px solid #bbb;
+					  }
 					li.active {
 						color: rgba(0, 0, 0, 0.8);
 					}
@@ -287,5 +317,29 @@ body,html {
 			background-position: center center;
 		}
 	}
+
+	.overlay {
+		display:    none;
+		position:   fixed;
+		z-index:    1000;
+		top:        0;
+		left:       0;
+		height:     100%;
+		width:      100%;
+		background: rgba(209, 200, 200, 0.3) 
+					url('https://media.giphy.com/media/11ASZtb7vdJagM/giphy.gif') 
+					50% 50% 
+					no-repeat;
+	}
+	body.loading .overlay {
+		overflow: hidden;   
+	}
+	body.loading .overlay {
+		display: block;
+	}
 	
 }
+
+
+
+

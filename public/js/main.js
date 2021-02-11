@@ -30,9 +30,9 @@
     let data = await fetchData(constant.CITIES_URL);
     if (data) {
       /* filter citites from response*/
-      const cities = filterItemsByKey(data, 'name');
+      const citiesData = filterItemsByKey(data, 'name', 'country');
       /* pass data to autocomplete function */
-      autocomplete(document.getElementById("mySearchInput"), cities);
+      autocomplete(document.getElementById("mySearchInput"), citiesData);
     }
   }
 
@@ -50,12 +50,14 @@
 
   });
 
+  const extractCityName = cityLongName => cityLongName.split(",")[0];
+
   const hasNumber = input => /\d/.test(input);
 
   /* fucntion for fetching the weather data by city */
   const getWeatherData = async (SEARCH_TERM) => {
     localStorage.setItem('city', SEARCH_TERM);
-    const SEARCH_URL = `${constant.GET_WEATHER_URL}?q=${SEARCH_TERM}&units=${constant.UNITS}&appid=${constant.API_KEY}`
+    const SEARCH_URL = `${constant.GET_WEATHER_URL}?q=${extractCityName(SEARCH_TERM)}&units=${constant.UNITS}&appid=${constant.API_KEY}`
     let res = await fetchData(SEARCH_URL);
 
     if (res) {
@@ -65,7 +67,7 @@
       document.getElementById("location_temp_max").innerHTML = res['main']['temp_max'];
       document.getElementById("location_temp_min").innerHTML = res['main']['temp_min'];
       if ($("#mySearchInput").val() === "") {
-        $("#mySearchInput").val(res.name)
+        $("#mySearchInput").val(localStorage.getItem("city"))
       }
     } else {
       /* clear input after displaying error */
@@ -77,6 +79,7 @@
   /* fetch utitlity for get call */
   const fetchData = async (url) => {
     try {
+      displayLoadingScreen(true);
       let response = await fetch(url);
       if (!response.ok) { /* throw response if not ok */
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -88,10 +91,13 @@
     } catch (e) { /* print error message */
       alert('There has been a problem with your fetch operation: ' + e.message);
     }
+    finally {
+      // displayLoadingScreen(false);
+    }
   }
 
-  const filterItemsByKey = (itemArr, key = 'name') => itemArr.map((item) => item[key]);
-
+  const filterItemsByKey = (itemArr, ...key) => itemArr.map((item) => `${item[key[0]]}, ${item[key[1]]}`);
+  // const filterItemsByKey = (itemArr, ...key) => itemArr.map((item) => item[key[0]]);
   // auto complete logic
   const autocomplete = (inp, arr) => {
     /*the autocomplete function takes two arguments,
@@ -113,7 +119,8 @@
       /*for each item in the array...*/
       for (i = 0; i < arr.length; i++) {
         /*check if the item starts with the same letters as the text field value:*/
-        if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
+        // if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
+        if (arr[i].substr(0, val.length).toUpperCase().includes(val.toUpperCase())) {
           /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
           /*make the matching letters bold:*/
@@ -197,26 +204,34 @@
       url: constant.CURRENT_LOC_URL,
       jsonpCallback: "callback",
       dataType: "jsonp",
-      success: function (location) {
-        if (location.city) {
-          getWeatherData(location.city);
-        }
+      success: (location) => {
+        if (location.city) getWeatherData(location.city);
       },
-      error: function (location) {
-        alert("something went wrong while getting the current location");
-      }
+      error: alert("something went wrong while getting the current location")
     });
 
   });
 
   /* function for getting current date time */
   const getCurrentDateTime = () => {
-    setInterval(callback, 1000);
+    var d = new Date();
+    document.getElementById("currentDateTime").innerHTML = `${d.toLocaleTimeString()}`;
+    // setInterval(callback, 1000);
+    // callback();
 
-    function callback() {
-      var d = new Date();
-      document.getElementById("currentDateTime").innerHTML = `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
-    }
+    // function callback() {
+    //   var d = new Date();
+    //   document.getElementById("currentDateTime").innerHTML = `${d.toLocaleTimeString()}`;
+    // }
+  }
+
+  /* function for displaying the loading screen */
+  const displayLoadingScreen = (displayLoader = false) => {
+    const $body = $('body')
+    if (displayLoader)
+      $body.addClass("loading");
+    else
+      $body.removeClass("loading");
   }
 
 })()

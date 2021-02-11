@@ -61,7 +61,10 @@ body, html {
     justify-content: space-evenly; }
   body .autocomplete, html .autocomplete {
     position: relative;
-    display: inline-block; }
+    display: inline-block;
+    flex: 8; }
+    body .autocomplete .search, html .autocomplete .search {
+      height: 100% !important; }
   body input, html input {
     border: 1px solid transparent;
     background-color: #f1f1f1;
@@ -72,7 +75,8 @@ body, html {
   body input[type=submit], html input[type=submit] {
     background-color: black;
     color: #fff;
-    cursor: pointer; }
+    cursor: pointer;
+    flex: 1; }
   body .autocomplete-items, html .autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;
@@ -105,7 +109,7 @@ body, html {
     color: #fff;
     margin-left: 6%;
     border: none;
-    width: 74px; }
+    flex: 1; }
   body .weather-card, html .weather-card {
     margin: 60px auto;
     background: #fff;
@@ -157,11 +161,14 @@ body, html {
             color: #fff; }
           body .weather-card .top .wrapper .temp .deg, html .weather-card .top .wrapper .temp .deg {
             display: inline-block;
-            font-size: 35px;
+            font-size: 3%;
             font-weight: 600;
             color: #fff;
             vertical-align: top;
             margin-top: 10px; }
+          @media only screen and (max-width: 600px) {
+            body .weather-card .top .wrapper .temp .temp-value, html .weather-card .top .wrapper .temp .temp-value {
+              font-size: 44px; } }
       body .weather-card .top:after, html .weather-card .top:after {
         content: "";
         height: 100%;
@@ -179,8 +186,7 @@ body, html {
         margin: 0;
         font-size: 0;
         padding: 0;
-        padding-top: 20px;
-        max-height: 155px; }
+        padding-top: 20px; }
         body .weather-card .bottom .wrapper .forecast a, html .weather-card .bottom .wrapper .forecast a {
           text-decoration: none;
           color: #000; }
@@ -191,7 +197,7 @@ body, html {
           margin-bottom: 10px; }
         body .weather-card .bottom .wrapper .forecast li, html .weather-card .bottom .wrapper .forecast li {
           display: block;
-          font-size: 25px;
+          font-size: 18px;
           font-weight: 400;
           color: rgba(0, 0, 0, 0.25);
           line-height: 1em;
@@ -217,9 +223,35 @@ body, html {
                 vertical-align: top; }
               body .weather-card .bottom .wrapper .forecast li .condition .temp .temp-type, html .weather-card .bottom .wrapper .forecast li .condition .temp .temp-type {
                 font-size: 20px; }
+        body .weather-card .bottom .wrapper .forecast .deg, html .weather-card .bottom .wrapper .forecast .deg {
+          vertical-align: top;
+          font-size: 10px;
+          margin-bottom: 20px; }
+        body .weather-card .bottom .wrapper .forecast .pt-10, html .weather-card .bottom .wrapper .forecast .pt-10 {
+          padding-top: 10px; }
+        @media only screen and (max-width: 600px) {
+          body .weather-card .bottom .wrapper .forecast .temp-values, html .weather-card .bottom .wrapper .forecast .temp-values {
+            text-align: left !important; }
+          body .weather-card .bottom .wrapper .forecast .temp-value, html .weather-card .bottom .wrapper .forecast .temp-value {
+            font-size: 44px !important; } }
+        body .weather-card .bottom .wrapper .forecast .divider, html .weather-card .bottom .wrapper .forecast .divider {
+          border-top: 1px solid #bbb; }
         body .weather-card .bottom .wrapper .forecast li.active, html .weather-card .bottom .wrapper .forecast li.active {
           color: rgba(0, 0, 0, 0.8); }
   body .weather-card.rain .top, html .weather-card.rain .top {
     background: url("http://img.freepik.com/free-vector/girl-with-umbrella_1325-5.jpg?size=338&ext=jpg") no-repeat;
     background-size: cover;
     background-position: center center; }
+  body .overlay, html .overlay {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(209, 200, 200, 0.3) url("https://media.giphy.com/media/11ASZtb7vdJagM/giphy.gif") 50% 50% no-repeat; }
+  body body.loading .overlay, html body.loading .overlay {
+    overflow: hidden; }
+  body body.loading .overlay, html body.loading .overlay {
+    display: block; }
