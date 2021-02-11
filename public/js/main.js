@@ -92,7 +92,7 @@
       alert('There has been a problem with your fetch operation: ' + e.message);
     }
     finally {
-      // displayLoadingScreen(false);
+      displayLoadingScreen(false);
     }
   }
 
