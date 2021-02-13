@@ -69,7 +69,8 @@ body, html {
     border: 1px solid transparent;
     background-color: #f1f1f1;
     padding: 10px;
-    font-size: 16px; }
+    font-size: 16px;
+    border-radius: 0px !important; }
   body input[type=text], html input[type=text] {
     background-color: #f1f1f1; }
   body input[type=submit], html input[type=submit] {
@@ -99,7 +100,7 @@ body, html {
   body .display-flex, html .display-flex {
     display: flex; }
   body .pt-search-form, html .pt-search-form {
-    padding-top: 11%; }
+    padding-top: 6%; }
   body .w-300, html .w-300 {
     width: 400px; }
   body .footer_push, html .footer_push {
@@ -111,7 +112,7 @@ body, html {
     border: none;
     flex: 1; }
   body .weather-card, html .weather-card {
-    margin: 60px auto;
+    margin: 35px auto;
     background: #fff;
     box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
     overflow: hidden; }
@@ -125,7 +126,7 @@ body, html {
       background-position: center center;
       text-align: center; }
       body .weather-card .top .wrapper, html .weather-card .top .wrapper {
-        padding: 30px;
+        padding: 2% 0 0;
         position: relative;
         z-index: 1; }
         body .weather-card .top .wrapper .mynav, html .weather-card .top .wrapper .mynav {

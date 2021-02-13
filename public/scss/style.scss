@@ -91,6 +91,7 @@ body,html {
 		background-color: #f1f1f1;
 		padding: 10px;
 		font-size: 16px;
+		border-radius: 0px !important;
 	}
 	input[type=text] {
 		background-color: #f1f1f1;
@@ -128,7 +129,7 @@ body,html {
 		display: flex;
 	}
 	.pt-search-form {
-		padding-top: 11%;
+		padding-top: 6%;
 	}
 	.w-300 {
 		width: 400px;
@@ -146,7 +147,7 @@ body,html {
 		flex:1
 	}
 	.weather-card {
-		margin: 60px auto;
+		margin: 35px auto;
 		background: $color;
 		box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
 		overflow: hidden;
@@ -160,7 +161,7 @@ body,html {
 			background-position: center center;
 			text-align: center;
 			.wrapper {
-				padding: 30px;
+				padding: 2% 0 0;
 				position: relative;
 				z-index: 1;
 				.mynav {

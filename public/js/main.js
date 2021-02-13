@@ -22,7 +22,7 @@
     getCurrentDateTime();
     /* check if localstorage is not empty fetch the last selected country*/
     if (localStorage.getItem("city")) {
-      getWeatherData(localStorage.getItem("city"));
+      getWeatherData(localStorage.getItem("city"), true);
     }
   });
 
@@ -46,6 +46,7 @@
       alert("Numbers are not allowed."); //messages should be displayed with better user experience
     } else {
       getWeatherData(cityInput.value);
+      getCurrentDateTime()
     }
 
   });
@@ -55,17 +56,25 @@
   const hasNumber = input => /\d/.test(input);
 
   /* fucntion for fetching the weather data by city */
-  const getWeatherData = async (SEARCH_TERM) => {
+  const getWeatherData = async (SEARCH_TERM, isOnloadCall = false) => {
+    /* if previous selected city and current city is same return else proceed with api call */
+    if (!isOnloadCall && SEARCH_TERM === localStorage.getItem('city')) return;
+
     localStorage.setItem('city', SEARCH_TERM);
     const SEARCH_URL = `${constant.GET_WEATHER_URL}?q=${extractCityName(SEARCH_TERM)}&units=${constant.UNITS}&appid=${constant.API_KEY}`
     let res = await fetchData(SEARCH_URL);
 
     if (res) {
       /* if result is success assign values */
+      // document.getElementById("weather-condition").innerHTML = res.weather[0].main;
+      document.getElementById("weather-condition").innerHTML = (res.weather[0].description).toUpperCase();
       document.getElementById("location_name").innerHTML = res['name'] + ", " + res['sys']['country'];
-      document.getElementById("location_temp").innerHTML = res['main']['temp'];
-      document.getElementById("location_temp_max").innerHTML = res['main']['temp_max'];
-      document.getElementById("location_temp_min").innerHTML = res['main']['temp_min'];
+      let { temp, temp_max, temp_min, humidity } = res.main;
+      document.getElementById("location_temp").innerHTML = temp;
+      document.getElementById("location_temp_max").innerHTML = temp_max;
+      document.getElementById("location_temp_min").innerHTML = temp_min;
+      document.getElementById("humidity").innerHTML = humidity;
+
       if ($("#mySearchInput").val() === "") {
         $("#mySearchInput").val(localStorage.getItem("city"))
       }
@@ -203,12 +212,14 @@
     $.ajax({
       url: constant.CURRENT_LOC_URL,
       jsonpCallback: "callback",
-      dataType: "jsonp",
-      success: (location) => {
-        if (location.city) getWeatherData(location.city);
-      },
-      error: alert("something went wrong while getting the current location")
-    });
+      dataType: "jsonp"
+    }).done(location => {
+      let cityLongName = `${location.city}, ${location.country_name}`
+      if (cityLongName) getWeatherData(cityLongName);
+      getCurrentDateTime()
+      $("#mySearchInput").val(localStorage.getItem("city"))
+
+    }).fail(() => alert("something went wrong while getting the current location"))
 
   });
 
