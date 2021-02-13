@@ -108,9 +108,13 @@
    */
   const setWeatherCardValues = res => {
     let { temp, temp_max, temp_min, humidity } = res.main;
-    // document.getElementById("weather-condition").innerHTML = res.weather[0].main;
-    document.getElementById("weather-condition").innerHTML = (res.weather[0].description).toUpperCase();
-    document.getElementById("location_name").innerHTML = res['name'] + ", " + res['sys']['country'];
+    const { description } = res.weather[0];
+    const { name } = res;
+
+    document.body.style.backgroundImage =
+      "url('https://source.unsplash.com/1600x900/?" + name + "')";
+    document.getElementById("weather-condition").innerHTML = description;
+    document.getElementById("location_name").innerHTML = name + ", " + res['sys']['country'];
     document.getElementById("location_temp").innerHTML = temp;
     document.getElementById("location_temp_max").innerHTML = temp_max;
     document.getElementById("location_temp_min").innerHTML = temp_min;

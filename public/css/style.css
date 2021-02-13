@@ -48,7 +48,8 @@ body, html {
     color: rgba(255, 252, 240, 0.99);
     margin-top: 20px;
     padding-top: 20px;
-    padding-bottom: 20px; }
+    padding-bottom: 20px;
+    flex: 1; }
   body .is-custom-icon-heart, html .is-custom-icon-heart {
     color: rgba(255, 116, 115, 0.99); }
   body .is-custom-footer-link, html .is-custom-footer-link {
@@ -239,6 +240,8 @@ body, html {
           border-top: 1px solid #bbb; }
         body .weather-card .bottom .wrapper .forecast li.active, html .weather-card .bottom .wrapper .forecast li.active {
           color: rgba(0, 0, 0, 0.8); }
+    body .weather-card #weather-condition, html .weather-card #weather-condition {
+      text-transform: capitalize; }
   body .weather-card.rain .top, html .weather-card.rain .top {
     background: url("http://img.freepik.com/free-vector/girl-with-umbrella_1325-5.jpg?size=338&ext=jpg") no-repeat;
     background-size: cover;

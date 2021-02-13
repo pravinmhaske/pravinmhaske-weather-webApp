@@ -63,6 +63,7 @@ body,html {
 		margin-top: 20px;
 		padding-top: 20px;
 		padding-bottom: 20px;
+		flex:1;
 	}
 	.is-custom-icon-heart {
 		color: rgba(255, 116, 115, .99);
@@ -309,6 +310,9 @@ body,html {
 					}
 				}
 			}
+		}
+		#weather-condition{
+			text-transform: capitalize;
 		}
 	}
 	.weather-card.rain {
