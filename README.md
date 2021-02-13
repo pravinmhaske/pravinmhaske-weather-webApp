@@ -28,7 +28,7 @@ npm run scss
 ```
 * start server on port 3000 with script
 ```
-npm run start scss
+npm start
 ```
 ## About code structure
 <p align="center"><img src="public/assets/screenshots/code-structure.png" /></p>
@@ -45,7 +45,7 @@ npm run start scss
 * This folder has server.js file which runs a node server at port 3000 and serves index.html file.
 
 
-To start the app, run start command and browse in browser at [weatherApp](http://localhost:3000)localhost:3000
+To start the app, run start command and browse in browser at [Weather App] (http://localhost:3000)localhost:3000
 
 ```
 npm start
