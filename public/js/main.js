@@ -14,6 +14,8 @@
     constant = appConstObj.getAppConst();
     autoCompObj = new Autocomplete();
     utilObj = new Util();
+    let uiGenObj = new UIGenerater();
+    uiGenObj.generateFooter();
   }
 
   const loadApp = () => {
@@ -27,6 +29,8 @@
     if (localStorage.getItem("city")) {
       getWeatherData(localStorage.getItem("city"), true);
     }
+    // Get the copyright year automatically. 
+    document.getElementById("copyright").innerHTML = new Date().getFullYear();
   }
 
   const setAutocomplete = async () => {
