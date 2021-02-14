@@ -1,6 +1,6 @@
 (function () {
 
-  let ftObj = appConstObj = constant = autoCompObj = utilObj = null;
+  let ftObj = appConstObj = constant = autoCompObj = utilObj = uiGenObj = null;
 
   $(document).ready(function () {
     initiateObjects(); //initiate object of classes
@@ -14,8 +14,7 @@
     constant = appConstObj.getAppConst();
     autoCompObj = new Autocomplete();
     utilObj = new Util();
-    let uiGenObj = new UIGenerater();
-    uiGenObj.generateFooter();
+    uiGenObj = new UIGenerater();
   }
 
   const loadApp = () => {
@@ -30,6 +29,8 @@
       getWeatherData(localStorage.getItem("city"), true);
     else
       getUsersCurrentLocWeatherData(); //if local storage is empty then load current locations
+
+    uiGenObj.generateFooter();//generate footer html in dom
     // Get the copyright year automatically. 
     document.getElementById("copyright").innerHTML = new Date().getFullYear();
   }
