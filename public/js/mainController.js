@@ -11,7 +11,6 @@
     // get fetch utility,app constants and create their object
     ftObj = new Fetch();
     appConstObj = new AppConst();
-    constant = appConstObj.getAppConst();
     autoCompObj = new Autocomplete();
     utilObj = new Util();
     uiGenObj = new UIGenerater();
@@ -20,6 +19,7 @@
   const loadApp = () => {
     /* once document is loaded clear seacrh filter and focus it*/
     $(".search").val("").focus();
+    constant = appConstObj.getAppConst();
     /* get list of cities and aadd datasource to autocomplete*/
     setAutocomplete();
     /* function call for getting current date time to screen*/
