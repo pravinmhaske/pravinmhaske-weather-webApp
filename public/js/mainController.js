@@ -26,9 +26,10 @@
     /* function call for getting current date time to screen*/
     loadTimeOfDayOnScreen();
     /* check if localstorage is not empty fetch the last selected country*/
-    if (localStorage.getItem("city")) {
+    if (localStorage.getItem("city"))
       getWeatherData(localStorage.getItem("city"), true);
-    }
+    else
+      getUsersCurrentLocWeatherData(); //if local storage is empty then load current locations
     // Get the copyright year automatically. 
     document.getElementById("copyright").innerHTML = new Date().getFullYear();
   }
@@ -80,11 +81,11 @@
 
   /* function for fetching the current city of the user */
   document.getElementById("getCurrentLocation").addEventListener("click", function (e) {
-    getUsersCurrentLocation();
+    getUsersCurrentLocWeatherData();
     // TRIED WITH FETCH BUT GIVES CORS ERROR SO DID WITH JQUERY -change this
   });
 
-  const getUsersCurrentLocation = async () => {
+  const getUsersCurrentLocWeatherData = async () => {
     $.ajax({
       url: constant.CURRENT_LOC_URL,
       jsonpCallback: "callback",
